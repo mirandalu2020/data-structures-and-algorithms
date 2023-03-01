@@ -1,5 +1,7 @@
 'use strict';
 
+const { index } = require("cheerio/lib/api/traversing");
+
 /* ------------------------------------------------------------------------------------------------
 
 CHALLENGE 1 - Review
@@ -32,7 +34,7 @@ Write a function named addQuestion that, given an array of strings, uses map to 
 
 const addQuestion = (arr) => {
   // Solution code here...
-  return arr.map(str => str+'?')
+  return arr.map(str => str+'?');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -90,6 +92,7 @@ For example: charCode(['h','i']) returns [104, 105].
 
 const charCode = (arr) => {
   // Solution code here...
+  return arr.map(char => char.charCodeAt(0));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -104,6 +107,10 @@ For example: evenOdd([1,2,3]) returns ['odd','even','odd'].
 
 const evenOdd = (arr) => {
   // Solution code here...
+  return arr.map(val =>
+    typeof(val) !== 'number' ? 'N/A'
+      : val%2 === 0 ? 'even':'odd'
+  );
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -150,6 +157,8 @@ const snorlaxAbilities = {
 
 const extractAbilities = (arr) => {
   // Solution code here...
+  return arr.map(item => item.ability.name);
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -197,6 +206,14 @@ const snorlaxStats = {
 
 const extractStats = (arr) => {
   // Solution code here...
+  //Expected [{"name": "speed", "total": 35}, {"name": "special-defense", "total": 112}, {"name": "special-attack", "total": 74}]
+  let newArr = arr.map(
+    (element)=>new Object({
+      'name':element.stat.name,
+      'total':element.effort+element.baseStat
+    }));
+
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -261,14 +278,14 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should return an array containing the character code for each letter', () => {
     expect(charCode(['C', 'o', 'd', 'e', '3', '0', '1'])).toStrictEqual([ 67, 111, 100, 101, 51, 48, 49 ]);
     expect(charCode(['C', 'o', 'd', 'e', '3', '0', '1']).length).toStrictEqual(7);
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should return an array containing the keys from an object', () => {
     expect(evenOdd([5, 8, 2, 6, 9, 13, 542, 541])).toStrictEqual([ 'odd', 'even', 'even', 'even', 'odd', 'odd', 'even', 'odd' ]);
     expect(evenOdd([5, 8, 2, 6, 9, 13, 542, 541]).length).toStrictEqual(8);
@@ -290,14 +307,14 @@ xdescribe('Testing challenge 8', () => {
   });
 });
 
-xdescribe('Testing challenge 9', () => {
+describe('Testing challenge 9', () => {
   test('It should return an array containing only the ability names', () => {
     expect(extractAbilities(snorlaxAbilities.abilities)).toStrictEqual(['gluttony', 'cute charm', 'immunity']);
     expect(extractAbilities(snorlaxAbilities.abilities).length).toStrictEqual(3);
   });
 });
 
-xdescribe('Testing challenge 10', () => {
+describe('Testing challenge 10', () => {
   test('It should return an array containing objects with name and total values', () => {
     expect(extractStats(snorlaxStats.stats)).toStrictEqual([
       { name: 'speed', total: 35, },
