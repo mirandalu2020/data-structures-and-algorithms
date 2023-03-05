@@ -13,7 +13,7 @@ You can assume that neither firstName nor lastName will be blank
 ------------------------------------------------------------------------------------------------ */
 const toLastNames = people => {
   // Solution code here...
-  return people.map(e => `${e.firstName} ${e.lastName}`)
+  return people.map(e => `${e.firstName} ${e.lastName}`);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -195,6 +195,13 @@ const characters = [
 
 const countNumberOfChildren = (arr) => {
   // Solution code here...
+  let numberOfChildren = function (a) {
+    return (a.children !== undefined ? a.children.length : 0 );
+  };
+  let result = arr.reduce((accumulator,currentVal) =>
+    accumulator + numberOfChildren(currentVal), 0
+  );
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -207,7 +214,12 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 
 const calculateAverage = (arr) => {
   // Solution code here...
+  let result = arr.reduce((acc, currentVal) =>
+    acc+currentVal, 0);
+  return result/arr.length;
 };
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 9 - Stretch Goal
@@ -228,6 +240,11 @@ const isPrime = (value) => {
 
 const countPrimeNumbers = (arr) => {
   // Solution code here...
+  let result = arr.reduce((acc, curr) => {
+    return isPrime(curr) ? acc+1 : acc+0;
+  },0);
+
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -270,6 +287,12 @@ const snorlaxData = {
 
 const extractStats = (snorlaxData) => {
   // Solution code here...
+  const indexed = snorlaxData.stats.reduce( (acc, val) => {
+    acc[val.stat.name] = val.baseStat;
+    return acc;
+  }, {} );
+
+  return indexed;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -284,6 +307,10 @@ Write a function named extractChildren that, given the array of characters from 
 
 const extractChildren = (arr) => {
   // Solution code here...
+  let filteredCharacters = arr.filter(char => char.name.includes('a'));
+  let filteredChildren = filteredCharacters.reduce((a,c) => {return c.children !== undefined ? a+','+c.children : a;}, []);
+  let result = filteredChildren.slice(1).split(',');
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -340,31 +367,31 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should return the total number of children', () => {
     expect(countNumberOfChildren(characters)).toStrictEqual(14);
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should return the average of the numbers in the array', () => {
     expect(calculateAverage([18, 290, 37, 4, 55, 16, 7, 85 ])).toStrictEqual(64);
   });
 });
 
-xdescribe('Testing challenge 9', () => {
+describe('Testing challenge 9', () => {
   test('It should return a count of the prime numbers in the array', () => {
     expect(countPrimeNumbers([1, 2, 13, 64, 45, 56, 17, 8])).toStrictEqual(3);
   });
 });
 
-xdescribe('Testing challenge 10', () => {
+describe('Testing challenge 10', () => {
   test('It should return an object that contains the names of each stat as individual keys and the respective baseStats as values to those keys.', () => {
     expect(extractStats(snorlaxData)).toStrictEqual({'speed': 30, 'special-defense': 110, 'special-attack': 65});
   });
 });
 
-xdescribe('Testing challenge 11', () => {
+describe('Testing challenge 11', () => {
   test('It should return an array containing the names of the children', () => {
     expect(extractChildren(characters)).toStrictEqual([ 'Robb', 'Sansa', 'Arya', 'Bran', 'Rickon', 'Drogon', 'Rhaegal', 'Viserion', 'Margaery', 'Loras' ]);
     expect(extractChildren(characters).length).toStrictEqual(10);
