@@ -139,7 +139,7 @@ const hasChildrenValues = (arr, character) => {
   // Solution code here...
   let result = false;
   arr.forEach(i => {
-    if (Object.values(i).includes(character)  && i.children) {
+    if (Object.values(i).includes(character) && i.children) {
       result = true;
     }
   }
