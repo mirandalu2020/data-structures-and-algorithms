@@ -15,7 +15,7 @@ Reverse the elements in an array without using the built-in method
 >    reversedArr.push( arr [arr.length - i] )
 > }
 
-return reversedArr
+. return reversedArr
 }
 
 ## Solution
