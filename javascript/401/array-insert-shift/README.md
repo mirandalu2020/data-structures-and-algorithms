@@ -14,18 +14,18 @@ Space → O(n), because the space taken also scapes linearly with the size of th
 
 
 ## Solution
-> nsertAndShift (arr ,num) {
-> 	let index = Math.ceil(arr.length/2);
-> 	let array1 = [];
-> 	let array2=[];
->	let resultArr = [];
->	for (let i=0, i <= index, i++) {
->    array1[i] = arr[i]
-> }
-> for (let i=0, i < index, i++) {
->     array2[i] = arr[index+1+i]
-> }
 
-> return resultArr=[...arr1, num, …arr2]
-> }
+function insertAndShift (arr ,num) {\
+	let index = Math.ceil(arr.length/2);\
+	let array1 = [];\
+	let array2=[];\
+	let resultArr = [];\
+	for (let i=0, i <= index, i++) {\
+    array1[i] = arr[i]\
+}\
+for (let i=0, i < index, i++) {\
+    array2[i] = arr[index+1+i]\
+}\
 
+return resultArr=[...arr1, num, …arr2]\
+}
