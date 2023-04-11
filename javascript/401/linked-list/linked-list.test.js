@@ -58,4 +58,72 @@ describe ('Should test on linked list', () => {
     expect(list.toString()).toEqual('{ 1 } -> { 0 } -> { null }');
   });
 
+  test('Can successfully add a node to the end of the linked list', () => {
+    const list = new LinkedList();
+    list.append(1);
+    list.append(2);
+    console.log(list);
+    expect(list.head.value).toEqual(1);
+    expect(list.head.next.value).toEqual(2);
+  });
+
+  test('Can successfully add multiple nodes to the end of a linked list', () => {
+    const list = new LinkedList();
+    list.append(1);
+    list.append(2);
+    list.append(3);
+    // console.log(list);
+    expect(list.head.value).toEqual(1);
+    expect(list.head.next.value).toEqual(2);
+    expect(list.head.next.next.value).toEqual(3);
+  });
+
+  test('Can successfully insert a node before a node located i the middle of a linked list', () => {
+    const list = new LinkedList();
+    list.append(1);
+    list.append(2);
+    list.append(3);
+    list.insertBefore(2,'newVal');
+    expect(list.head.next.value).toEqual('newVal');
+  });
+
+  test('Can successfully insert a node before a node located i the middle of a linked list', () => {
+    const list = new LinkedList();
+    list.append(1);
+    list.append(2);
+    list.append(3);
+    list.insertBefore(2,'newVal');
+    // console.log(list);
+    expect(list.head.next.value).toEqual('newVal');
+  });
+
+  test('Can successfully insert a node before the first node of a linked list', () => {
+    const list = new LinkedList();
+    list.append(1);
+    list.append(2);
+    list.append(3);
+    list.insertBefore(1,'newVal');
+    // console.log(list);
+    expect(list.head.value).toEqual('newVal');
+  });
+
+  test('Can successfully insert a node after a given node of the linked list', () => {
+    const list = new LinkedList();
+    list.append(1);
+    list.append(2);
+    list.append(3);
+    list.insertAfter(1,'newVal');
+    // console.log(list);
+    expect(list.head.next.value).toEqual('newVal');
+  });
+
+  xtest('Can successfully insert a node after the last node of the linked list', () => {
+    const list = new LinkedList();
+    list.append(1);
+    list.append(2);
+    list.append(3);
+    list.insertAfter(3,'newVal');
+    console.log(list);
+    expect(list.head.next.next.next.value).toEqual('newVal');
+  });
 });
