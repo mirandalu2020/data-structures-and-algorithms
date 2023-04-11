@@ -12,7 +12,11 @@ An empty linked list will be built once the class is instantiated, methods avail
 
 ## Whiteboard Process
 <!-- Embedded whiteboard image -->
+Whiteboard for Linked List
 ![White Board](UML.png)
+
+Whiteboard for LinkedList Insertion
+![Linkedlist Insertion](linked-list-insertion.png)
 
 ## Approach & Efficiency
 
