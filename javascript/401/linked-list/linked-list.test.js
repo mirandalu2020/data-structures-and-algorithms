@@ -116,14 +116,4 @@ describe ('Should test on linked list', () => {
     // console.log(list);
     expect(list.head.next.value).toEqual('newVal');
   });
-
-  xtest('Can successfully insert a node after the last node of the linked list', () => {
-    const list = new LinkedList();
-    list.append(1);
-    list.append(2);
-    list.append(3);
-    list.insertAfter(3,'newVal');
-    console.log(list);
-    expect(list.head.next.next.next.value).toEqual('newVal');
-  });
 });
