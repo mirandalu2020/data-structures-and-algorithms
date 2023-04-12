@@ -4,6 +4,7 @@ class Node {
   constructor(value) {
     this.value = value;
     this.next = null;
+    this.previous = null;
   }
 }
 
@@ -11,7 +12,8 @@ class LinkedList {
 
   constructor() {
     this.head = null;
-    this.length=0;
+    this.tail = null;
+    this.length = 0;
   }
 
   insertVal(value) {
@@ -83,6 +85,7 @@ class LinkedList {
     if (this.head.value ===val ) {
       node.next = this.head;
       this.head = node;
+      this.length += 1;
     }
 
     while(current.value !== val) {
@@ -93,6 +96,7 @@ class LinkedList {
     //existing while-loop when current.value = val
     previous.next = node;
     node.next = current.next;
+    this.length += 1;
     //move the value from value and beyond forward by 1 position
 
   }
@@ -111,12 +115,39 @@ class LinkedList {
       }
       else {
         current.next = node;
+        this.length += 1;
         node.next = after;
         break;
       }
-
     }
+  }
 
+  kthFromEnd(k) {
+    let current = this.head;
+
+    let message;
+    if (this.length < k || k < 0){
+      message = 'Exception, out of bounds';
+      return message;
+    }
+    else if (this.length === k) {
+      let idx = 0;
+      while (idx < (this.length -1)) {
+        current = current.next;
+        idx ++;
+      }
+      return current.value;
+    }
+    else if (this.length > k) {
+      let forwardIndex = this.length-k-1;
+      let idx = 0;
+      while (idx < forwardIndex) {
+        current = current.next;
+        idx ++;
+      }
+      console.log(current.value);
+    }
+    return message || current.value;
   }
 
 }
