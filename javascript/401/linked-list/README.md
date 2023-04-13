@@ -23,6 +23,9 @@ Whiteboard for Linked List
 Whiteboard for LinkedList Insertion
 ![Linkedlist Insertion](linked-list-insertion.png)
 
+Whiteboard for zipped Linkedlist
+![zip](linked-list-zip.png)
+
 ## Approach & Efficiency
 
 Time: O(n), the worst runtime would be the lenggh from the first node to the last node;

@@ -150,6 +150,27 @@ class LinkedList {
     return message || current.value;
   }
 
+  zipLists(list1, list2){
+    let node = new Node(list1.value);
+    this.head=node;
+    let current = this.head;
+    let current1 = list1.head;
+    let current2 = list2.head;
+
+    for (let idx = 0; idx < list1.length; idx++) {
+      current = current1;
+      current1 = current1.next;
+      this.length += 1;
+
+      node.next= current2;
+      current2 = current2.next;
+      current.next = node.next;
+      current = current.next;
+      this.length += 1;
+    }
+
+  }
+
 }
 
 module.exports = LinkedList;
