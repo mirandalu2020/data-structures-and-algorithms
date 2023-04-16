@@ -4,7 +4,6 @@ class Node {
   constructor(value) {
     this.value = value;
     this.next = null;
-    this.previous = null;
   }
 }
 
@@ -20,14 +19,19 @@ class LinkedList {
     //create a new node with the user input
     const node = new Node(value);
 
-    //if the head is empty, set the head as the node
+    //if the head is NOT empty, set the head as the node
+    //inserting from the front does not affect the tail
     if (this.head) {
       node.next = this.head;
       this.head=node;
+
     }
 
+    // when the list is empty
+    // head and tail points to the same and only node
     else {
       this.head = node;
+      this.tail = node;
     }
   }
 
@@ -62,16 +66,23 @@ class LinkedList {
 
   append(val) {
     let node = new Node(val);
+    //case of empty list
+    //head and tail points to the same node
     if (this.head === null) {
       this.head = node;
+      this.tail = node;
       this.length += 1;
     }
+
+    //non-empty list instance
+    //the newly appended node IS the new tail;
     else {
       let current = this.head;
       while (current.next !== null) {
         current = current.next;
       }
       current.next = node;
+      this.tail = node;
       this.length += 1;
     }
   }
@@ -120,6 +131,8 @@ class LinkedList {
         break;
       }
     }
+    console.log('INSERT AFTER DONE', this);
+    // return this;
   }
 
   kthFromEnd(k) {
@@ -130,6 +143,7 @@ class LinkedList {
       message = 'Exception, out of bounds';
       return message;
     }
+
     else if (this.length === k) {
       let idx = 0;
       while (idx < (this.length -1)) {
@@ -138,6 +152,7 @@ class LinkedList {
       }
       return current.value;
     }
+
     else if (this.length > k) {
       let forwardIndex = this.length-k-1;
       let idx = 0;
@@ -147,30 +162,12 @@ class LinkedList {
       }
       console.log(current.value);
     }
+
     return message || current.value;
   }
 
-  zipLists(list1, list2){
-    let node = new Node(list1.value);
-    this.head=node;
-    let current = this.head;
-    let current1 = list1.head;
-    let current2 = list2.head;
-
-    for (let idx = 0; idx < list1.length; idx++) {
-      current = current1;
-      current1 = current1.next;
-      this.length += 1;
-
-      node.next= current2;
-      current2 = current2.next;
-      current.next = node.next;
-      current = current.next;
-      this.length += 1;
-    }
-
-  }
-
 }
+
+
 
 module.exports = LinkedList;

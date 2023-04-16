@@ -1,7 +1,7 @@
 'use strict';
 
 // const LinkedList = require('./linked-list');
-const LinkedList = require('./linked-list');
+const LinkedList = require('../linked-list');
 
 describe ('Should test on linked list', () => {
 
