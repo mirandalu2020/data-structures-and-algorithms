@@ -48,6 +48,13 @@ An empty linked list will be built once the class is instantiated, methods avail
 
 - an exception will be raised if the queue is empty
 
+## Pseudo-Queue Methods
+
+`enqueue(value)`: adds a new Node to the rear Stack of the queue
+
+`dequeue()`: removes a node in the front Stack of the queue;
+
+
 ## Whiteboard Process (Linked Lists)
 <!-- Embedded image -->
 Whiteboard for Linked List
@@ -63,6 +70,10 @@ Whiteboard for zipped Linkedlist
 ## Whiteboard Process (Stacks and Queues)
 
 ![stack and queue](stack-n-queue.png)
+
+## Whiteboard Process (Pseudo-Queue)
+
+![queue consists of two stacks](pseudo-queue.png)
 
 ## Approach & Efficiency
 
@@ -137,6 +148,31 @@ Whiteboard for zipped Linkedlist
 - Time: O(1), the runtime will be constant since it only checks the value of the node in the front, regardless regardless of the size of the queue
 - Space: O(1), the resource will be constant since it only checks the value of the node in the front, regardless regardless of the size of the queue
 
+**Pseudo-Queue**
+
+`enqueue(value)`: adds a new value to the top of the stack in the back
+
+- Time: O(1), the runtime will be constant since it only pushes a value to the back of the queue, which is top of the rear-stack, regardless regardless of the size of the queue or neither size of the stacks it's consisted of;
+- Space: O(1), the resource will be constant since it only pushes a value to the rear stack's top regardless regardless of the size of the queue
+
+`dequeue()`: removes the node in the front of the queue, returns the value of the node being removed
+
+- Time:
+**Case 1**: when neither stack given is empty
+Time: O(1), the runtime will be constant since it only pops off a value from top of the front-stack of the queue, regardless regardless of the size of the queue
+Space: O(1), the resource will be constant since it only pops off a value to the front stack of the queue regardless regardless of the size of the queue
+
+**Case 2**: when both stacks are emtpy
+Time: O(1), the runtime will be constant it only needs to check the length of the pseudo-queue
+Space: O(1), the resource will be constant since it only needs to check the length of the pseudo-queue
+
+**Case 3**: when only stack2 is empty
+Time: O(n), the runtime will depend on the size of stack on (the rear stack), since it needs to iteratively transfer each node to stack2(the front stack). So the time will increase as the size of stack1 increases
+Space: O(1), the resource will be constant since no new queue is made
+
 ## Solution
 
-[label](linked-list.js)
+[linked-lists](linked-list.js)
+[zip-linked-lists](zip-list.js)
+[stack](stack.js)
+[queue](queue.js)
