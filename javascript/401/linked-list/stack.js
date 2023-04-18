@@ -21,7 +21,7 @@ class Stack extends LinkedList{
     let node = new Node(value);
     if (this.length === 0){
       this.top = node;
-      this.head = node;
+      // this.head = node;
       this.length += 1;
     }
     else{
@@ -58,7 +58,7 @@ class Stack extends LinkedList{
     }
 
     else{
-      console.log('Nothing to pop');
+      console.log('Nothing to peak');
       throw Error('Nothing to peak');
     }
   }
