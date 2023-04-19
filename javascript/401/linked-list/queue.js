@@ -42,7 +42,8 @@ class Queue extends LinkedList {
       let temp = this.front;
       this.front = this.front.prev;
       this.length -= 1;
-      return temp.value;
+      console.log(this);
+      return temp;
     }
 
     else if(this.length === 1 ){
