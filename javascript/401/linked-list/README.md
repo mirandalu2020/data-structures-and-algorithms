@@ -1,5 +1,7 @@
 # Linked List
 
+## Table of Contents
+
 ## Linked List Methods
 
 An empty linked list will be built once the class is instantiated, methods available within the class:
