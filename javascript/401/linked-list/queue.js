@@ -63,9 +63,14 @@ class Queue extends LinkedList {
     if (this.length === 0) {
       throw new Error('Nothing to peak');
     }
-
     return this.front.value;
+  }
 
+  peek() {
+    if (this.length === 0) {
+      throw new Error('Nothing to peak');
+    }
+    return this.front.value;
   }
 
   isEmpty() {
