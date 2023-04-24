@@ -63,6 +63,17 @@ class Stack extends LinkedList{
     }
   }
 
+  peek() {
+    if (this.length !== 0){
+      return this.top.value;
+    }
+
+    else{
+      console.log('Nothing to peak');
+      throw Error('Nothing to peak');
+    }
+  }
+
   isEmpty() {
     if (this.length === 0){
       return true;
