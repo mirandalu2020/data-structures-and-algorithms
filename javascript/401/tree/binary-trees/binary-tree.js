@@ -46,7 +46,6 @@ class BinaryTree {
       }
     }
 
-    console.log(this);
     traverse(node);
     return arr;
   }

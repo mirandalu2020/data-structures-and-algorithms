@@ -22,6 +22,7 @@ describe('Testing binary tree methods', ()=>{
     newTree.add(1);
     newTree.add(0);
     newTree.add(2);
+    console.log(JSON.stringify(newTree));
     expect(newTree.root.value).toEqual(1);
     expect(newTree.root.left.value).toEqual(0);
     expect(newTree.root.right.value).toEqual(2);
