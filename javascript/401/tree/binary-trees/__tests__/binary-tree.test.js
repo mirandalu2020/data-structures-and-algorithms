@@ -1,7 +1,7 @@
 'use strict';
 
-const {BinaryTree, Node} = require('./binary-tree');
-const BinarySearchTree = require('./binary-search-tree');
+const {BinaryTree, Node} = require('../binary-tree');
+const BinarySearchTree = require('../binary-search-tree');
 
 let newTree = new BinarySearchTree();
 
@@ -22,6 +22,7 @@ describe('Testing binary tree methods', ()=>{
     newTree.add(1);
     newTree.add(0);
     newTree.add(2);
+    console.log(JSON.stringify(newTree));
     expect(newTree.root.value).toEqual(1);
     expect(newTree.root.left.value).toEqual(0);
     expect(newTree.root.right.value).toEqual(2);
@@ -48,6 +49,13 @@ describe('Testing binary tree methods', ()=>{
 
   test('Returns false for .contains() of the value does not exist', ()=>{
     expect(newTree.contains('falsy-value')).toBe(false);
+  });
+
+  test('Returns the greatest value in a tree', ()=>{
+    newTree.add(100);
+    newTree.add(30);
+    newTree.add(20);
+    expect(newTree.max()).toEqual(100);
   });
 
 });
