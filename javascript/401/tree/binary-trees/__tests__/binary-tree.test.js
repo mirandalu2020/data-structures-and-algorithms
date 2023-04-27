@@ -43,6 +43,10 @@ describe('Testing binary tree methods', ()=>{
     expect(result).toEqual([0, 2, 1]);
   });
 
+  test('Traverse the input tree using a Breadth-first approach', ()=>{
+    expect(newTree.breadthFirst()).toEqual([1, 0, 2]);
+  });
+
   test('Returns true for .contains() if the value exists', ()=>{
     expect(newTree.contains(0)).toBe(true);
   });
@@ -55,6 +59,7 @@ describe('Testing binary tree methods', ()=>{
     newTree.add(100);
     newTree.add(30);
     newTree.add(20);
+    // console.log(JSON.stringify(newTree));
     expect(newTree.max()).toEqual(100);
   });
 

@@ -18,54 +18,25 @@ class BinarySearchTree extends BinaryTree {
       return this;
     }
 
-    //duplicated values
-    if (value === this.root.value) {
-      return this;
-    }
-
     //*****if given val is smaller than current value*****
-    if (value < current.value) {
-      //Case1: no node on current.left
-      if(current.left === null){
-        current.left = newNode;
-        return this;
-      }
+    while(current) {
 
-      //Case2: value is smaller than current value BUT greater than current.left.value
-      else if(value > current.left.value){
-        newNode.left = current.left.value;
-        current.left = newNode;
-      }
-
-      //Case3: value is smaller than current value but NOT greater than current.left.value
-      //move the pointer to current.left and repeat from the beginning
-      else {
+      if (value < current.value) {
+        //Case1: no node on current.left
+        if(current.left === null){
+          current.left = newNode;
+          return this;
+        }
         current = current.left;
-        this.add(value, current);
       }
-    }
+      //Case2: value is smaller than current value BUT greater than current.left.value
+      else if(value > current.value){
 
-    //*****if given val is greater than root*****
-    //move to the right child. If the child is null, add the newNode; if not null, repeat the function from beginning
-    if (value > current.value){
-      // Case1: no node on current.right
-      if (current.right === null){
-        current.right = newNode;
-        return this;
-      }
-
-      //Case2: value is greater than current.value but less than current.right.value
-      else if (value < current.right.value){
-        newNode.left = current.right;
-        current.right = newNode;
-        return this;
-      }
-
-      //Case3: value is greater than current.value but NOT less than current.right.value
-      //Move on to the sub-tree rooted at current.right and repeat
-      else {
+        if (current.right === null){
+          current.right = newNode;
+          return this;
+        }
         current = current.right;
-        this.add(value, current);
       }
     }
   }
@@ -98,10 +69,16 @@ class BinarySearchTree extends BinaryTree {
 
   max(node=this.root){
     let current = node;
+    let maxVal = current.value;
     while(current.right){
       current = current.right;
+      if (current.value > maxVal){
+        maxVal = current.value;
+        // console.log(maxVal);
+      }
     }
-    return current.value;
+    // console.log(maxVal);
+    return maxVal;
   }
 
 
