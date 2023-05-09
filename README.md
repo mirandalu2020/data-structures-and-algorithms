@@ -7,3 +7,4 @@ See [setup instructions](https://codefellows.github.io/setup-guide/code-301/3-co
 ### 401 Data Structures, Code Challenges
 
 [reverse-array](javascript/401/array-reverse/README.md)
+[insertion-sort](javascript/401/sort/insertion/README.md)
