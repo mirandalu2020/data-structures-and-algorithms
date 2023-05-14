@@ -37,7 +37,7 @@ describe('Tests for methods and properties of a hash table', ()=> {
   test('5. Successfully handle a collision within the hashtable', ()=>{
     nameTable.set('da', 'FirstName2');
     let result = nameTable.get('da');
-    let expected = nameTable.buckets[3].head.next.value['da'];
+    let expected = nameTable.buckets[3].head.value['da'];
     // console.log(expected);
     // console.log(nameTable.get('da'));
     // let expected = nameTable[3].head.next.value;
