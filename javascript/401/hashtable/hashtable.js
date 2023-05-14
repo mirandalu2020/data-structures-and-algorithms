@@ -19,11 +19,11 @@ class HashTable {
     if (!this.buckets[position]){
       this.buckets[position] = new LinkedList();
       let entry = {[key]: value};
-      this.buckets[position].append(entry);
+      this.buckets[position].insertVal(entry);
     }
     else if (this.buckets[position]){
       let entry = {[key]: value};
-      this.buckets[position].append(entry);
+      this.buckets[position].insertVal(entry);
     }
   }
 
