@@ -59,7 +59,7 @@ function sortMovieByTitle(arr) {
   while (!completed) {
     let changed=false;
     for (let idx = 0; idx < arr.length - 1; idx++) {
-      if (arr[idx]['title'].localeComparearr(arr[idx + 1]['title'])) {
+      if ((arr[idx]['title']).localeCompare(arr[idx + 1]['title'])) {
         let temp = arr[idx];
         arr[idx] = arr[idx + 1];
         arr[idx + 1] = temp;
