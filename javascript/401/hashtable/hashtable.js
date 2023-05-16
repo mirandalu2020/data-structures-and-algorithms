@@ -47,8 +47,8 @@ class HashTable {
   //returns boolean indicating if the key already exists
   has(key){
     let position = this.hash(key);
-    if (this.buckets[position] !== undefined){
-      console.log(this.buckets.position);
+    if (this.buckets[position]){
+      console.log(this.buckets[position]);
       return true;
     }
     return false;
