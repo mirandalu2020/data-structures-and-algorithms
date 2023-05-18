@@ -11,6 +11,7 @@ synonyms.set('outfit', 'garb');
 antonyms.set('diligent', 'idle');
 antonyms.set('fond', 'averse');
 antonyms.set('guide', 'follow');
+antonyms.set('nosynnonym', 'nosynnonym');
 
 let joined = leftJoin(synonyms, antonyms);
 
@@ -25,6 +26,11 @@ describe('Testing leftJoin function for two hash maps', ()=>{
   it('Should make the antonym null if the key only exists in the synnonym table', ()=>{
     let result = joined['outfit'];
     expect(result).toEqual(['garb', null]);
+  });
+
+  it('Should NOT contain words only exits in antonyms table', ()=>{
+    let result = joined['nosynnonym'];
+    expect(result).toEqual(undefined);
   });
 
 });
