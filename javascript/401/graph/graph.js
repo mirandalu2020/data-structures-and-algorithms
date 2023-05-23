@@ -43,6 +43,22 @@ class Graph {
     return this.adjacencyList.get(vertex);
   }
 
+  breathFirst(node) {
+    let queue = [];
+
+    const traverseAndPush = (node) => {
+      const neighbors = this.getNeighbors(node);
+      queue.unshift(node);
+      for (let neighbor of neighbors){
+        if(!queue.includes(neighbor.vertex)){
+          traverseAndPush(neighbor.vertex);
+        }
+      }
+    };
+    traverseAndPush(node);
+    return queue;
+
+  }
 }
 
 module.exports = Graph;
