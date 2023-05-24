@@ -35,6 +35,15 @@ class Graph {
     return [...this.adjacencyList.keys()];
   }
 
+  getNode(key){
+    // console.log(key);
+    let primaryKey = JSON.stringify(key);
+    let obj = {};
+    obj[primaryKey] = this.adjacencyList.get(key);
+    // console.log(obj);
+    return obj;
+  }
+
   size(){
     return this.adjacencyList.size;
   }
@@ -45,19 +54,31 @@ class Graph {
 
   breathFirst(node) {
     let queue = [];
+    let visited = new Set();
 
     const traverseAndPush = (node) => {
-      const neighbors = this.getNeighbors(node);
-      queue.unshift(node);
-      for (let neighbor of neighbors){
-        if(!queue.includes(neighbor.vertex)){
-          traverseAndPush(neighbor.vertex);
+      if (!visited.has(node)){
+        queue.push(node);
+        visited.add(node);
+        let neighbors = this.getNeighbors(node);
+        // console.log(neighbors);
+        if (neighbors.length) {
+          for (let neighbor of neighbors){
+            traverseAndPush(neighbor.vertex);
+          }
+        }
+        else {
+          let allNodes = this.getNodes();
+          // console.log(allNodes);
+          for (let node of allNodes) {
+            traverseAndPush(node);
+          }
         }
       }
     };
     traverseAndPush(node);
+    console.log(queue);
     return queue;
-
   }
 }
 
