@@ -24,7 +24,6 @@ class LinkedList {
     if (this.head) {
       node.next = this.head;
       this.head=node;
-
     }
 
     // when the list is empty

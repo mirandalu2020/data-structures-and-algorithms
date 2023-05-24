@@ -17,10 +17,10 @@ describe('Tests for graph traversal', ()=>{
     // console.log(graph);
     let allNodes = graph.breathFirst(one);
     expect(allNodes).toEqual([
-      { value: 4 },
-      { value: 3 },
+      { value: 1 },
       { value: 2 },
-      { value: 1 }
+      { value: 3 },
+      { value: 4 }
     ]);
   });
 
@@ -28,7 +28,11 @@ describe('Tests for graph traversal', ()=>{
     let five = graph.addNode(5);
     let allNodes = graph.breathFirst(five);
     expect(allNodes).toEqual([
-      { value: 5}
+      { value: 5},
+      { value: 1 },
+      { value: 2 },
+      { value: 3 },
+      { value: 4 }
     ]);
   });
 });
