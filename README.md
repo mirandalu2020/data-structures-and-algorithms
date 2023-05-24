@@ -8,3 +8,5 @@ See [setup instructions](https://codefellows.github.io/setup-guide/code-301/3-co
 
 [reverse-array](javascript/401/array-reverse/README.md)
 [insertion-sort](javascript/401/sort/insertion/README.md)
+[graph-implementations and traversals](javascript/401/graph/README.md)
+[use graph theory to calcualte trip cost](javascript/401/graph/graph-business-trip/README.md)
